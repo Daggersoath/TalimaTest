@@ -10,12 +10,9 @@
 
 static constexpr char MAZE_WALL = '\xB2';
 static constexpr char MAZE_PATH = '\xB0';
-//static constexpr char MAZE_WALL = 'W';
-//static constexpr char MAZE_PATH = ' ';
 static constexpr char MAZE_START = 'S';
 static constexpr char MAZE_DESTINATION = 'X';
-static constexpr char MAZE_PLAYER = '*';
-static constexpr char MAZE_FOUNDPATH = 'P';
+static constexpr char MAZE_FOUNDPATH = '*';
 
 
 template<size_t WIDTH = 32, size_t HEIGHT = 32>
@@ -61,7 +58,7 @@ inline Maze<WIDTH, HEIGHT>::Maze()
                 bFound = true;
                 mPlayerPos.first = x;
                 mPlayerPos.second = y;
-                mMaze[x][y] = MAZE_PLAYER;
+                mMaze[x][y] = MAZE_START;
                 break;
             }
         }
@@ -122,60 +119,6 @@ inline bool Maze<WIDTH, HEIGHT>::TestPath(const std::vector<std::pair<size_t, si
 
     return true;
 }
-
-/*
-template<std::uint64_t WIDTH, std::uint64_t HEIGHT>
-inline void Maze<WIDTH, HEIGHT>::DepthFirstGenerate(const std::pair<size_t, size_t>& pos)
-{
-    unsigned char movedDirs = 0;
-    unsigned char moveDir[4] = {
-        (unsigned char)(std::rand() % 4),
-        (unsigned char)(std::rand() % 4),
-        (unsigned char)(std::rand() % 4),
-        (unsigned char)(std::rand() % 4)
-    };
-
-    movedDirs = 1 << moveDir[0];
-    for (unsigned char index = 1; index < 4; ++index) {
-        while (movedDirs & (1 << moveDir[index])) moveDir[index] = ++moveDir[index] % 4;
-    }
-
-    for (unsigned char index = 0; index < 4; ++index) {
-        switch (moveDir[index])
-        {
-        case 0:
-            if (CanMoveUp(pos)) {
-                mMaze[pos.first][pos.second + 1] = MAZE_PATH;
-                mMaze[pos.first][pos.second + 2] = MAZE_PATH;
-                DepthFirstGenerate(std::make_pair(pos.first, pos.second + 2));
-            }
-            break;
-        case 1:
-            if (CanMoveDown(pos)) {
-                mMaze[pos.first][pos.second - 1] = MAZE_PATH;
-                mMaze[pos.first][pos.second - 2] = MAZE_PATH;
-                DepthFirstGenerate(std::make_pair(pos.first, pos.second - 2));
-            }
-            break;
-        case 2:
-            if (CanMoveLeft(pos)) {
-                mMaze[pos.first - 1][pos.second] = MAZE_PATH;
-                mMaze[pos.first - 2][pos.second] = MAZE_PATH;
-                DepthFirstGenerate(std::make_pair(pos.first - 2, pos.second));
-            }
-            break;
-        case 3:
-            if (CanMoveRight(pos)) {
-                mMaze[pos.first + 1][pos.second] = MAZE_PATH;
-                mMaze[pos.first + 2][pos.second] = MAZE_PATH;
-                DepthFirstGenerate(std::make_pair(pos.first + 2, pos.second));
-            }
-            break;
-        default:
-            break;
-        }
-    }
-}*/
 
 template<std::uint64_t WIDTH, std::uint64_t HEIGHT>
 inline void Maze<WIDTH, HEIGHT>::DepthFirstGenerate(const std::pair<size_t, size_t>& pos)

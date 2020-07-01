@@ -73,6 +73,7 @@ namespace SorasPathfindImplementation {
         startNode.costToEnd = ManhattanDistance(&startNode, mDestination);
         startNode.costToStart = 0;
     }
+
     template<size_t MAP_WIDTH, size_t MAP_HEIGHT>
     inline bool AStar<MAP_WIDTH, MAP_HEIGHT>::Step()
     {

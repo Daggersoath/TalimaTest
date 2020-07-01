@@ -142,7 +142,7 @@
     <ClCompile Include="TalimaTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AStar.h" />
+    <ClInclude Include="SorasAStar.h" />
     <ClInclude Include="Maze.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

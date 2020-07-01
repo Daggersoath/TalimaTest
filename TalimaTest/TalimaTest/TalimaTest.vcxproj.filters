@@ -23,7 +23,7 @@
     <ClInclude Include="Maze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AStar.h">
+    <ClInclude Include="SorasAStar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
